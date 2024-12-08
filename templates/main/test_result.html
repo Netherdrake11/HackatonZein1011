@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Результат теста</h1>
+    <p>Вы ответили правильно на {{ correct_answers }} из {{ total_questions }} вопросов.</p>
+    <p>Ваш процент правильных ответов: {{ percentage }}%</p>
+    <a href="{% url 'test_view' %}" class="btn btn-primary">Пройти тест снова</a>
+{% endblock %}

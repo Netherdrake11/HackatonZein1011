@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive tasks</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'interactive_tasks.js' %}" defer></script>
+</head>
+<body>
+    <!-- Навигационное меню -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">ZEIN</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'testmain' %}">Main</a></li>
+            <li><a href="{% url 'level_list' %}">Lessons</a></li>
+            <li><a href="{% url 'words' %}">Vocabulary</a></li>
+            <li><a href="{% url 'tasks' %}">Tasks</a></li>
+            {% if user.is_authenticated %}
+                <!-- Если пользователь авторизован, показываем имя и ссылку "Выйти" -->
+                <span class="user-greeting">Hello {{ user.username }}!</span>
+                <a href="{% url 'logout' %}" class="logout-link">LogOut</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="login-link me-2">LogIn</a>
+                <a href="{% url 'register' %}" class="register-link">Register</a>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Выбор раздела -->
+    <div class="container">
+        <h1>Select section</h1>
+        <div class="section-links">
+            <button onclick="showTasks('grammar')">Grammar</button>
+            <button onclick="showTasks('vocabulary')">Vocabulary</button>
+            <button onclick="showTasks('culture')">Culture</button>
+            <button onclick="window.location.href='https://www.soyle.kz/test/level'">Test</button>
+        </div>
+
+        <!-- Секция заданий -->
+        <div id="tasks-container" style="display: none;">
+            <h2 id="section-title"></h2>
+            <div id="tasks-content"></div>
+            <button onclick="goBack()">Back to sections</button>
+        </div>
+
+        <!-- Кнопка для добавления задания -->
+        <div class="add-task-container">
+            <a href="{% url 'add_task' %}" class="btn btn-primary">Add New Task</a>
+        </div>
+    </div>
+
+    <script src="{% static 'js/interactive_tasks.js' %}" defer></script>
+</body>
+</html>

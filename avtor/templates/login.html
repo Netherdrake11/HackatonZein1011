@@ -1,0 +1,79 @@
+{#<!-- templates/login.html -->#}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title>Авторизация</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h2>Авторизация</h2>#}
+{#    <form method="POST" action="{% url 'login' %}">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <button type="submit">Войти</button>#}
+{#    </form>#}
+{#    {% if form.errors %}#}
+{#        <p>Неверный логин или пароль. Пожалуйста, попробуйте снова.</p>#}
+{#    {% endif %}#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authorization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигация</title>
+    {% load static %}  <!-- Подключаем тег static -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<!-- Навигационное меню -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/testmain">ZEIN</a>
+        </div>
+    <ul class="nav-links">
+    <li><a href="{% url 'testmain' %}">Main</a></li>
+    <li><a href="{% url 'level_list' %}">Lessons</a></li>
+    <li><a href="{% url 'words' %}">Vocabulary</a></li>
+    <li><a href="{% url 'tasks' %}">Tasks</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'register' %}">Register</a></li>
+    </ul>
+
+    </nav>
+{#    <h2>Авторизация</h2>#}
+{#    <form method="POST" action="{% url 'login' %}">#}
+{#        {% csrf_token %}#}
+{#        <label for="username">Имя пользователя:</label>#}
+{#        <input type="text" id="username" name="username" required>#}
+{#        <label for="password">Пароль:</label>#}
+{#        <input type="password" id="password" name="password" required>#}
+{#        <button type="submit">Войти</button>#}
+{#    </form>#}
+{#    {% if error %}#}
+{#        <p style="color: red;">{{ error }}</p>#}
+{#    {% endif %}#}
+<div class="center-content">
+    <h2>Authorization</h2>
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <div class="button-container">
+            <button type="submit">Login</button>
+        </div>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    </form>
+<form method="POST" action="{% url 'login' %}">
+
+</div>
+
+</body>
+</html>

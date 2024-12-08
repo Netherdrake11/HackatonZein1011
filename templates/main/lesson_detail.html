@@ -1,0 +1,82 @@
+{##}
+{##}
+{#{% extends "base.html" %}#}
+{#<h1>Выберите уровень</h1>#}
+{#<ul>#}
+{#    {% for level in levels %}#}
+{#        <li><a href="{{ level.id }}/lessons/">{{ level.name }}</a></li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{##}
+{#{% block content %}#}
+{#    <h1>{{ lesson.title }}</h1>#}
+{#<p>{{ lesson.description }}</p>#}
+{##}
+{#{% if lesson.video %}#}
+{#    <video controls>#}
+{#        <source src="{{ lesson.video.url }}" type="video/mp4">#}
+{#        Your browser does not support the video tag.#}
+{#    </video>#}
+{#{% endif %}#}
+{##}
+{#{% if lesson.audio %}#}
+{#    <audio controls>#}
+{#        <source src="{{ lesson.audio.url }}" type="audio/mpeg">#}
+{#        Your browser does not support the audio tag.#}
+{#    </audio>#}
+{#{% endif %}#}
+{##}
+{#{% if lesson.image %}#}
+{#    <img src="{{ lesson.image.url }}" alt="Изображение для урока">#}
+{#{% endif %}#}
+{##}
+{#{% if lesson.test_link %}#}
+{#    <p><a href="{{ lesson.test_link }}" target="_blank">Пройти тест</a></p>#}
+{#{% endif %}#}
+{##}
+{#{% if lesson.additional_links %}#}
+{#    <h3>Дополнительные материалы</h3>#}
+{#    <p>{{ lesson.additional_links }}</p>#}
+{#{% endif %}#}
+{#<a href="{% url 'level_list' %}">Вернуться к списку уроков</a>#}
+{##}
+{#    </ul>#}
+{#    </div>#}
+{#{% endblock %}#}
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ lesson.title }}</h1>
+    <p>{{ lesson.description }}</p>
+
+    {% if lesson.video %}
+        <video class="responsive-video" controls>
+            <source src="{{ lesson.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+
+    {% if lesson.audio %}
+        <audio controls>
+            <source src="{{ lesson.audio.url }}" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    {% endif %}
+
+    {% if lesson.image %}
+        <img src="{{ lesson.image.url }}" alt="Изображение для урока">
+    {% endif %}
+
+    {% if lesson.test_link %}
+        <p><a href="{{ lesson.test_link }}" target="_blank" class="btn btn-test">Пройти тест</a></p>
+    {% endif %}
+
+    {% if lesson.additional_links %}
+        <h3>Дополнительные материалы</h3>
+        <p>{{ lesson.additional_links }}</p>
+    {% endif %}
+
+    <!-- Кнопка "Вернуться к списку уроков" -->
+    <a href="{% url 'level_list' %}" class="btn btn-back">Вернуться к списку уроков</a>
+
+{% endblock %}

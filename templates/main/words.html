@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Vocabulary
+{% endblock %}
+
+{% block content %}
+    <div class="vocabulary-container">
+        <h1 class="page-title">Dictonary</h1>
+
+        <!-- Форма поиска -->
+        <form method="get" action="{% url 'words' %}" class="search-form">
+            <input type="text" name="search" class="search-input" placeholder="Введите слово для поиска" value="{{ request.GET.search }}">
+            <button type="submit" class="search-button">Найти</button>
+        </form>
+
+        <!-- Список слов -->
+        <div class="word-list">
+            {% for word in words %}
+                <div class="word-item">
+                    <span class="word">{{ word.word }}</span>
+                    <span class="translation">{{ word.translation }}</span>
+                </div>
+            {% empty %}
+                <p class="no-words">Пока нет слов в словаре. Добавьте свои первые слова!</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

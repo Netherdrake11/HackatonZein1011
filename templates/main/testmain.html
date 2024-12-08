@@ -1,0 +1,73 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#<h1>Welcome to Zein.kz!</h1>#}
+{#    <div class="features">#}
+{#        <h1>Start to learn kazakh language now!</h1>#}
+{#        <p>With us over {{ user_count }} peoples!</p>#}
+{#        <button class ="btn btn-warning">Start Training</button>#}
+{#        <form action="/avtor/login" method="get">#}
+{#            <button type="submit" class="btn btn-warning">Start Training</button>#}
+{#        </form>#}
+{#    </div>#}
+{#    <div class="ornament"></div>#}
+{##}
+{#{% endblock %}#}
+{#{% block content %}#}
+{#    <h1>Welcome to Zein.kz!</h1>#}
+{#    <div class="features">#}
+{#        <h1>Start to learn kazakh language now!</h1>#}
+{#        <p>With us over {{ user_count }} peoples!</p>#}
+{##}
+{#        {% if user.is_authenticated %}#}
+{#            <!-- Если пользователь авторизован, отправляем на страницу Lessons -->#}
+{#            <form action="{% url 'level_list' %}" method="get">#}
+{#                <button type="submit" class="btn btn-warning">Start Training</button>#}
+{#            </form>#}
+{#        {% else %}#}
+{#            <!-- Если пользователь не авторизован, отправляем на страницу регистрации -->#}
+{#            <form action="{% url 'login' %}" method="get">#}
+{#                <button type="submit" class="btn btn-warning">Start Training</button>#}
+{#            </form>#}
+{#        {% endif %}#}
+{##}
+{#    </div>#}
+{#    <div class="ornament"></div>#}
+{#{% endblock %}#}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to Zein.kz!</h1>
+    <div class="features">
+    <!-- Интерактивное изображение -->
+        <div class="interactive-image-container">
+            <a href="{% if user.is_authenticated %}{% url 'level_list' %}{% else %}{% url 'login' %}{% endif %}">
+                {% load static %}
+                <img src="{% static 'image/3.jpg' %}" alt="Interactive Image" class="interactive-image">
+
+            </a>
+        </div>
+        <h1>Start to learn kazakh language now!</h1>
+        <p>With us over {{ user_count }} peoples!</p>
+
+
+
+        {% if user.is_authenticated %}
+            <!-- Если пользователь авторизован, отправляем на страницу Lessons -->
+            <form action="{% url 'level_list' %}" method="get">
+                <button type="submit" class="btn btn-warning">Start Training</button>
+            </form>
+        {% else %}
+            <!-- Если пользователь не авторизован, отправляем на страницу регистрации -->
+            <form action="{% url 'login' %}" method="get">
+                <button type="submit" class="btn btn-warning">Start Training</button>
+            </form>
+        {% endif %}
+    </div>
+    <div class="ornament"></div>
+{% endblock %}
+
+

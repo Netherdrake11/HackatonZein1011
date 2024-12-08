@@ -1,0 +1,59 @@
+/* Центрирование всего блока */
+.center-content {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: center; /* Центрирование по вертикали */
+    align-items: center; /* Центрирование по горизонтали */
+    min-height: 100vh; /* Высота контейнера равна высоте экрана */
+    text-align: center;
+    background-color: #f4f4f4; /* Светлый фон */
+}
+
+/* Стили формы */
+form {
+    display: flex;
+    flex-direction: column; /* Элементы формы располагаются вертикально */
+    gap: 15px; /* Отступы между элементами формы */
+    width: 300px; /* Фиксированная ширина формы */
+    padding: 20px;
+    border: 1px solid #ccc; /* Рамка формы */
+    border-radius: 10px; /* Скруглённые углы */
+    background-color: #ffffff; /* Белый фон формы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для формы */
+}
+
+/* Поля ввода */
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Полная ширина поля */
+}
+
+/* Кнопки */
+button {
+    background-color: #004080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Центрирование кнопок */
+.button-container {
+    display: flex;
+    justify-content: center; /* Центрирование кнопки по горизонтали */
+}
+
+/* Эффекты для кнопок */
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.95); /* Легкое уменьшение при нажатии */
+}

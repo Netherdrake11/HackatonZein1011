@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+    {#<h1>Выберите уровень</h1>#}
+    {#<ul>#}
+    {#    {% for level in levels %}#}
+    {#        <li><a href="{{ level.id }}/lessons/">{{ level.name }}</a></li>#}
+    {#    {% endfor %}#}
+    {#</ul>#}
+
+{#{% block content %}#}
+{#    <div class="features">#}
+{#        <h1>Выберите уровень</h1>#}
+{#    <ul>#}
+{#    {% for level in levels %}#}
+{#        <li><a href="{{ level.id }}/lessons/">{{ level.name }}</a></li>#}
+{#    {% endfor %}#}
+{#    </ul>#}
+{#    </div>#}
+{#{% endblock %}#}
+{% block content %}
+    <div class="features">
+        <h1>Select level</h1>
+        <div class="level-buttons">
+            {% for level in levels %}
+                <a href="{{ level.id }}/lessons/" class="level-btn">{{ level.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

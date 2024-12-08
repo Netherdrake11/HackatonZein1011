@@ -1,0 +1,6 @@
+<!-- base.html -->
+{% if user.is_authenticated %}
+    <p>{{ user.username }} <a href="{% url 'logout' %}">Выйти</a></p>
+{% else %}
+    <p><a href="{% url 'login' %}">Войти</a> или <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+{% endif %}
